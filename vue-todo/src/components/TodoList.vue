@@ -28,19 +28,9 @@ export default {
       },
       () => {
         const todoIndex = this.todos.indexOf(todo);
-        
-        const response = axios.delete("http://127.0.0.1:3000/todos/2").then(response => {
-          let todos = response.data.map(
-          todo => ({
-            title: todo.title,
-            project: todo.desc,
-            done: todo.isComplete
-          }), []);
-
-          this.todos = todos;
-          //network request to delete todo
-          sweetalert('Deleted!', 'Your To-Do has been deleted.', 'success');
-        });
+        this.todos.splice(todoIndex,1);
+        const response = axios.delete(`http://127.0.0.1:3000/todos/${todo.id}`)
+        sweetalert('Deleted!', 'Your To-Do has been deleted.', 'success');
       })
     },
     completeTodo(todo) {

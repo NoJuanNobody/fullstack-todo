@@ -49,8 +49,11 @@ export default {
         isComplete: newTodo.done,
       }
       
-      axios.post('http://127.0.0.1:3000/todos', newTodoAdapter)
-      this.todos.push(newTodo);
+      const response = axios.post('http://127.0.0.1:3000/todos', newTodoAdapter).then(response => {
+        newTodo.id = response.data.id
+        this.todos.push(newTodo);
+      }
+      )
       sweetalert("Success!", "To-Do created!", "success");
     }
   }
