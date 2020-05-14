@@ -28,9 +28,10 @@ export default {
     };
   },
   mounted() {
-    return axios.get("http://127.0.0.1:3000/todos").then(response => {
+    axios.get("http://127.0.0.1:3000/todos").then(response => {
       let todos = response.data.map(
         todo => ({
+          id: todo.id,
           title: todo.title,
           project: todo.desc,
           done: todo.isComplete
@@ -42,6 +43,13 @@ export default {
   },
   methods: {
     createTodo(newTodo) {
+      const newTodoAdapter = {
+        title: newTodo.title,
+        desc: newTodo.project,
+        isComplete: newTodo.done,
+      }
+      
+      axios.post('http://127.0.0.1:3000/todos', newTodoAdapter)
       this.todos.push(newTodo);
       sweetalert("Success!", "To-Do created!", "success");
     }
