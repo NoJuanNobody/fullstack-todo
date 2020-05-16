@@ -27,7 +27,7 @@
           <input type='text' v-model="todo.project" >
         </div>
         <div class='ui two button attached buttons'>
-          <button class='ui basic blue button' v-on:click="hideForm">
+          <button class='ui basic blue button' v-on:click="hideForm(todo)"> 
             Close X
           </button>
         </div>
@@ -60,9 +60,9 @@
       showForm() {
         this.isEditing = true;
       },
-      hideForm() {
+      hideForm(todo) {
         this.isEditing = false;
-        //add request to save form
+        this.$emit('update-todo', todo);
       },
     },
   };

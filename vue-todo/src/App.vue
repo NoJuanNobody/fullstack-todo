@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-on:scroll="console.log('scrolls')">
     <h1 class="ui dividing centered header">Vue.js Todo App</h1>
     <div class="ui three column centered grid">
       <div class="column">
