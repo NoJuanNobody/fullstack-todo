@@ -58,7 +58,6 @@ export default {
       };
       const response = axios.put(`http://127.0.0.1:3000/todos/${todo.id}`, newtodo);
       sweetalert("updated!", "Your To-Do has been update.", "success");
-      console.log(response);
     },
     completeTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
@@ -67,7 +66,7 @@ export default {
       this.updateTodo(todo);
       sweetalert("Success!", "To-Do completed!", "success");
     }
-  }
+  };
 };
 </script>
 
